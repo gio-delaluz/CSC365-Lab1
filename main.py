@@ -3,6 +3,11 @@ from school_search import *
 def printQueryCommands():
     print("\t• S[tudent]: <lastname> [B[us]]\n\t• T[eacher]: <lastname>\n\t• B[us]: <number>\n\t• G[rade]: <number> [H[igh]|L[ow]]\n\t• A[verage]: <number>• I[nfo]\n\t• Q[uit]")
 
+def errorCheck():
+    print("That didn't seem to work. Try one of these queries:")
+    printQueryCommands()
+    return True
+
 def sourceQuery(user_query: str) -> bool:
     query = user_query.split()
     query_len = len(query)
@@ -27,17 +32,16 @@ def sourceQuery(user_query: str) -> bool:
                 searchStudent(lastname, True)
                 return True
             else:
-                print("That didn't seem to work. Try one of these queries:")
-                printQueryCommands()
-                return True
+                errorCheck()
         else:
-            print("That didn't seem to work. Try one of these queries:")
-            printQueryCommands()
-            return True
+            errorCheck()
     elif query[0] in teacher_options:
-        lastname = query[1].upper()
-        findTStudents(lastname)
-        return True
+        if query_len = 2:
+            lastname = query[1].upper()
+            findTStudents(lastname)
+            return True
+        else:
+            errorCheck()
     
     elif query[0] == "Q":
         return False
