@@ -7,4 +7,4 @@ Project Setup
 
 deactivate
 
-Use pandas.ipynb for expermenting functions
+Use pandas.ipynb for to build/experiment with functions
