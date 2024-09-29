@@ -15,3 +15,13 @@ def searchStudent(lastname: str, bus=False):
                 print(f"{row["StFirstName"]} {row["StLastName"]}, who takes bus route {row["Bus"]}.")
             else:
                 print(f"{row["StFirstName"]} {row["StLastName"]} is a {row["Grade"]} student assigned to the class of {row["TFirstName"]} {row["TLastName"]}.")
+
+def findTStudents(lastname: str):
+    df_found = df_students[df_students["TLastName"] == lastname]
+
+    if df_found.empty:
+        return
+    else:
+        # '_' means ignore index
+        for _, row in df_found.iterrows():
+            print(f"{row["StFirstName"]} {row["StLastName"]} is assigned to the class of {row["TFirstName"]} {row["TLastName"]}.")
