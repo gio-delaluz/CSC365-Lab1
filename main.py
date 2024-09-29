@@ -1,7 +1,11 @@
-from school_search import searchStudent
+from school_search import *
 
 def printQueryCommands():
     print("\t• S[tudent]: <lastname> [B[us]]\n\t• T[eacher]: <lastname>\n\t• B[us]: <number>\n\t• G[rade]: <number> [H[igh]|L[ow]]\n\t• A[verage]: <number>• I[nfo]\n\t• Q[uit]")
+
+def errorCheck():
+    print("That didn't seem to work. Try one of these queries:")
+    printQueryCommands()
 
 def sourceQuery(user_query: str) -> bool:
     query = user_query.split()
@@ -12,6 +16,7 @@ def sourceQuery(user_query: str) -> bool:
     
     student_options = {"S:", "Student:", "S"}
     bus_options = {"B", "Bus",}
+    teacher_options = {"T", "Teacher"}
 
     if query[0] in student_options:
         if query_len == 2:
@@ -19,18 +24,25 @@ def sourceQuery(user_query: str) -> bool:
             searchStudent(lastname)
             return True
 
+        # S[tudent]: <lastname> [B[us]]
         elif query_len == 3:
             if query[2] in bus_options:
                 lastname = query[1].upper()
                 searchStudent(lastname, True)
                 return True
             else:
-                print("That didn't seem to work. Try one of these queries:")
-                printQueryCommands()
+                errorCheck()
                 return True
         else:
-            print("That didn't seem to work. Try one of these queries:")
-            printQueryCommands()
+            errorCheck()
+            return True
+    elif query[0] in teacher_options:
+        if query_len == 2:
+            lastname = query[1].upper()
+            findTStudents(lastname)
+            return True
+        else:
+            errorCheck()
             return True
     
     elif query[0] == "Q":
