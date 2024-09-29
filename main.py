@@ -6,7 +6,6 @@ def printQueryCommands():
 def errorCheck():
     print("That didn't seem to work. Try one of these queries:")
     printQueryCommands()
-    return True
 
 def sourceQuery(user_query: str) -> bool:
     query = user_query.split()
@@ -33,15 +32,18 @@ def sourceQuery(user_query: str) -> bool:
                 return True
             else:
                 errorCheck()
+                return True
         else:
             errorCheck()
+            return True
     elif query[0] in teacher_options:
-        if query_len = 2:
+        if query_len == 2:
             lastname = query[1].upper()
             findTStudents(lastname)
             return True
         else:
             errorCheck()
+            return True
     
     elif query[0] == "Q":
         return False
