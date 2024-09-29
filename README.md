@@ -3,7 +3,7 @@ Project Setup
 - python -m venv .venv
 - venv\Scripts\activate
 - (venv)  pip install pandas
-- install dependencies to support .ipnb
+- install dependencies to support .ipynb
 deactivate
 
 Use pandas.ipynb for expermenting functions
