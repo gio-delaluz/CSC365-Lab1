@@ -5,37 +5,20 @@ def printQueryCommands():
 
 def sourceQuery(user_query: str) -> bool:
     query = user_query.split()
-<<<<<<< HEAD
-
-=======
->>>>>>> 1757aee36f034857ef70b550b20cf89eb9bee577
     query_len = len(query)
     
     if query_len == 0:
         return True
     
-<<<<<<< HEAD
-    # Remove colons
-    student_options = {"S", "Student"}
-    bus_options = {"B", "Bus"}
-
-    if query[0] in student_options:
-        # S[tudent]: <lastname>
-=======
     student_options = {"S:", "Student:", "S"}
     bus_options = {"B", "Bus",}
 
     if query[0] in student_options:
->>>>>>> 1757aee36f034857ef70b550b20cf89eb9bee577
         if query_len == 2:
             lastname = query[1].upper()
             searchStudent(lastname)
             return True
 
-<<<<<<< HEAD
-        # S[tudent]: <lastname> [B[us]]
-=======
->>>>>>> 1757aee36f034857ef70b550b20cf89eb9bee577
         elif query_len == 3:
             if query[2] in bus_options:
                 lastname = query[1].upper()
