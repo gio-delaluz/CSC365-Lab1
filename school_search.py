@@ -9,6 +9,13 @@ df_students['Grade'] = df_students['Grade'].astype('category')
 df_students['Classroom'] = df_students['Classroom'].astype('category')
 df_students['Bus'] = df_students['Bus'].astype('category')
 
+def check_cols():
+    if len(df_students.columns) != 8:
+        return False
+    
+    df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
+    return True
+
 def convert_grade_to_level(grade):
     if 0 <= grade <= 5:
         return 'kindergarten'
@@ -18,8 +25,6 @@ def convert_grade_to_level(grade):
         return 'high school'
     else:
         return 'unknown'
-    
-df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
 
 def searchStudent(lastname: str, bus=False):
     df_found = df_students[df_students["StLastName"] == lastname]

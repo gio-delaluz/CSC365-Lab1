@@ -8,6 +8,7 @@ def errorCheck():
     printQueryCommands()
 
 def sourceQuery(user_query: str) -> bool:
+
     query = user_query.split()
     query_len = len(query)
     
@@ -93,9 +94,11 @@ def sourceQuery(user_query: str) -> bool:
 
 def main():
     flag = True
-    while flag:
-        query = input("Enter command: ")
-        flag = sourceQuery(query)
+    # Exit program if incorrect number of columns in text file
+    if check_cols():
+        while flag:
+            query = input("Enter command: ")
+            flag = sourceQuery(query)
 
 if __name__ == "__main__":
     main()
