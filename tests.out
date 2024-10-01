@@ -95,3 +95,6 @@ Grade 6 has average GPA of 2.98.
 4: 15
 5: 0
 6: 21
+
+// TC-19 Actual:
+<program exists immediately upon running>
