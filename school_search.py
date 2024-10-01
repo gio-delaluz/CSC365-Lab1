@@ -44,7 +44,6 @@ def findTStudents(lastname: str):
         # '_' means ignore index
         for _, row in df_found.iterrows():
             print(f"{row["StFirstName"]} {row["StLastName"]} is assigned to the class of {row["TFirstName"]} {row["TLastName"]}.")
-<<<<<<< HEAD
 
 def findGStudents(number: int, low=False, high=False):
     df_found = df_students[df_students["Grade"] == number]
@@ -70,6 +69,18 @@ def findGStudents(number: int, low=False, high=False):
             f"who takes bus route {df_found.loc[max, "Bus"]}, is assigned to the class of "
             f"{df_found.loc[max, "TFirstName"]} {df_found.loc[max, "TLastName"]}. {df_found.loc[max, "StFirstName"]} "
             f"has a GPA of {df_found.loc[max, "GPA"]}.")
-            
-=======
->>>>>>> 6034ad63d4d3cbf260ff8de3bdbea9e00392d35f
+
+def calcAvgGPA(number: str):
+    df_found = df_students[df_students["Grade"] == number]
+
+    if df_found.empty:
+        return
+    else:
+        total = 0
+        num_rows = len(df_found.index)
+        # '_' means ignore index
+        for _, row in df_found.iterrows():
+            total += row["GPA"]
+        avg = total / num_rows
+        # .2f formats to 2 decimal places
+        print(f"Grade %d has average GPA of %.2f." % (number, avg))
