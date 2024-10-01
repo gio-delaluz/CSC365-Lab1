@@ -93,7 +93,6 @@ def findBus(busNum: int):
     df_found = df_students[df_students['Bus'] == busNum]
 
     if df_found.empty:
-        print('Empty')
         return
     
     else:
