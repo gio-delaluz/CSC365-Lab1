@@ -53,25 +53,34 @@ def findGStudents(number: int, low=False, high=False):
     if df_found.empty:
         return
     else:
-        student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
         if not low and not high:
             # '_' means ignore index
             for _, row in df_found.iterrows():
+                student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
                 print(f"{student_name} is in grade {row["Grade"]}.")
         elif low:
-            teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
             # Row number of lowest GPA
             min = df_found["GPA"].idxmin()
-            print(f"{student_name}, "
+
+            student_first = f"{df_found.loc[min, "StFirstName"].lower().capitalize()}"
+            student_last = f"{df_found.loc[min, "StLastName"].lower().capitalize()}"
+            teacher_name = f"{df_found.loc[min, "TFirstName"].lower().capitalize()} {df_found.loc[min, "TLastName"].lower().capitalize()}"
+
+            print(f"{student_first} {student_last}, "
             f"who takes bus route {df_found.loc[min, "Bus"]}, is assigned to the class of "
-            f"{teacher_name}. {df_found.loc[min, "StFirstName"]} "
+            f"{teacher_name}. {student_first} "
             f"has a GPA of {df_found.loc[min, "GPA"]}.")
         elif high:
             # Row number of highest GPA
             max = df_found["GPA"].idxmax()
-            print(f"{student_name}, "
+
+            student_first = f"{df_found.loc[max, "StFirstName"].lower().capitalize()}"
+            student_last = f"{df_found.loc[max, "StLastName"].lower().capitalize()}"
+            teacher_name = f"{df_found.loc[max, "TFirstName"].lower().capitalize()} {df_found.loc[max, "TLastName"].lower().capitalize()}"
+
+            print(f"{student_first} {student_last}, "
             f"who takes bus route {df_found.loc[max, "Bus"]}, is assigned to the class of "
-            f"{df_found.loc[max, "TFirstName"]} {df_found.loc[max, "TLastName"]}. {df_found.loc[max, "StFirstName"]} "
+            f"{df_found.loc[max, "TFirstName"]} {df_found.loc[max, "TLastName"]}. {student_first} "
             f"has a GPA of {df_found.loc[max, "GPA"]}.")
 
 def calcAvgGPA(number: str):
