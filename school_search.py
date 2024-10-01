@@ -43,7 +43,9 @@ def findTStudents(lastname: str):
     else:
         # '_' means ignore index
         for _, row in df_found.iterrows():
-            print(f"{row["StFirstName"]} {row["StLastName"]} is assigned to the class of {row["TFirstName"]} {row["TLastName"]}.")
+            student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
+            teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
+            print(f"{student_name} is assigned to the class of {teacher_name}.")
 
 def findGStudents(number: int, low=False, high=False):
     df_found = df_students[df_students["Grade"] == number]
@@ -51,21 +53,23 @@ def findGStudents(number: int, low=False, high=False):
     if df_found.empty:
         return
     else:
+        student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
         if not low and not high:
             # '_' means ignore index
             for _, row in df_found.iterrows():
-                print(f"{row["StFirstName"]} {row["StLastName"]} is in grade {row["Grade"]}.")
+                print(f"{student_name} is in grade {row["Grade"]}.")
         elif low:
+            teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
             # Row number of lowest GPA
             min = df_found["GPA"].idxmin()
-            print(f"{df_found.loc[min, "StFirstName"]} {df_found.loc[min, "StLastName"]}, "
+            print(f"{student_name}, "
             f"who takes bus route {df_found.loc[min, "Bus"]}, is assigned to the class of "
-            f"{df_found.loc[min, "TFirstName"]} {df_found.loc[min, "TLastName"]}. {df_found.loc[min, "StFirstName"]} "
+            f"{teacher_name}. {df_found.loc[min, "StFirstName"]} "
             f"has a GPA of {df_found.loc[min, "GPA"]}.")
         elif high:
             # Row number of highest GPA
             max = df_found["GPA"].idxmax()
-            print(f"{df_found.loc[max, "StFirstName"]} {df_found.loc[max, "StLastName"]}, "
+            print(f"{student_name}, "
             f"who takes bus route {df_found.loc[max, "Bus"]}, is assigned to the class of "
             f"{df_found.loc[max, "TFirstName"]} {df_found.loc[max, "TLastName"]}. {df_found.loc[max, "StFirstName"]} "
             f"has a GPA of {df_found.loc[max, "GPA"]}.")
