@@ -3,6 +3,7 @@ import pandas as pd
 df_students = pd.read_csv("students.txt", sep=",", header=None,
             names=["StLastName", "StFirstName", "Grade", "Classroom","Bus", "GPA", "TLastName", "TFirstName"])
 
+
 # Convert Grade, Classroom, and Bus into categorical variables
 df_students['Grade'] = df_students['Grade'].astype('category')
 df_students['Classroom'] = df_students['Classroom'].astype('category')
@@ -62,26 +63,26 @@ def findGStudents(number: int, low=False, high=False):
             # Row number of lowest GPA
             min = df_found["GPA"].idxmin()
 
-            student_first = f"{df_found.loc[min, "StFirstName"].lower().capitalize()}"
-            student_last = f"{df_found.loc[min, "StLastName"].lower().capitalize()}"
-            teacher_name = f"{df_found.loc[min, "TFirstName"].lower().capitalize()} {df_found.loc[min, "TLastName"].lower().capitalize()}"
+            student_first = f"{df_found.at[min, "StFirstName"].lower().capitalize()}"
+            student_last = f"{df_found.at[min, "StLastName"].lower().capitalize()}"
+            teacher_name = f"{df_found.at[min, "TFirstName"].lower().capitalize()} {df_found.at[min, "TLastName"].lower().capitalize()}"
 
             print(f"{student_first} {student_last}, "
-            f"who takes bus route {df_found.loc[min, "Bus"]}, is assigned to the class of "
+            f"who takes bus route {df_found.at[min, "Bus"]}, is assigned to the class of "
             f"{teacher_name}. {student_first} "
-            f"has a GPA of {df_found.loc[min, "GPA"]}.")
+            f"has a GPA of {df_found.at[min, "GPA"]}.")
         elif high:
             # Row number of highest GPA
             max = df_found["GPA"].idxmax()
 
-            student_first = f"{df_found.loc[max, "StFirstName"].lower().capitalize()}"
-            student_last = f"{df_found.loc[max, "StLastName"].lower().capitalize()}"
-            teacher_name = f"{df_found.loc[max, "TFirstName"].lower().capitalize()} {df_found.loc[max, "TLastName"].lower().capitalize()}"
+            student_first = f"{df_found.at[max, "StFirstName"].lower().capitalize()}"
+            student_last = f"{df_found.at[max, "StLastName"].lower().capitalize()}"
+            teacher_name = f"{df_found.at[max, "TFirstName"].lower().capitalize()} {df_found.at[max, "TLastName"].lower().capitalize()}"
 
             print(f"{student_first} {student_last}, "
-            f"who takes bus route {df_found.loc[max, "Bus"]}, is assigned to the class of "
-            f"{df_found.loc[max, "TFirstName"]} {df_found.loc[max, "TLastName"]}. {student_first} "
-            f"has a GPA of {df_found.loc[max, "GPA"]}.")
+            f"who takes bus route {df_found.at[max, "Bus"]}, is assigned to the class of "
+            f"{df_found.at[max, "TFirstName"]} {df_found.at[max, "TLastName"]}. {student_first} "
+            f"has a GPA of {df_found.at[max, "GPA"]}.")
 
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
