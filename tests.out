@@ -1,0 +1,97 @@
+// CSC 365
+// Lab 1-a test suite
+
+// TC-1 Actual: 
+Bobbie Havir is a kindergarten student assigned to the class of Gavin Hamer.
+
+// TC-2 Actual:
+<empty line>
+
+// TC-3 Actual:
+<program terminates>
+
+// TC-4 Actual: 
+S: Racanello Bus
+
+// TC-5 Actual:
+<empty line>
+
+// TC-6 Actual:
+Noel Racanello is assigned to the class of Benito Kerbs.
+Dimple Coronado is assigned to the class of Benito Kerbs.
+Wan Boyter is assigned to the class of Benito Kerbs.
+Rosetta Kemerer is assigned to the class of Benito Kerbs.
+Dewayne Demartini is assigned to the class of Benito Kerbs.
+
+// TC-7 Actual:
+<reprompt>
+
+// TC-8 Actual:
+<reprompt>
+
+// TC-9 Actual:
+Xuan Cookus is in grade 3.
+Shante Elhaddad is in grade 3.
+Hye Brodersen is in grade 3.
+Sharri Swedlund is in grade 3.
+Manie Ciganek is in grade 3.
+Tomas Covington is in grade 3.
+Tory Early is in grade 3.
+Lela Linhart is in grade 3.
+Grace Theunissen is in grade 3.
+
+// TC-10 Actual:
+That didn't seem to work. Try one of these queries:
+        • S[tudent]: <lastname> [B[us]]
+        • T[eacher]: <lastname>
+        • B[us]: <number>
+        • G[rade]: <number> [H[igh]|L[ow]]
+        • A[verage]: <number>• I[nfo]
+        • Q[uit]
+
+
+// TC-11 Actual:
+Xuan Cookus is a kindergarten student in classroom 107.
+Shante Elhaddad is a kindergarten student in classroom 107.
+Devin Immerman is a kindergarten student in classroom 105.
+Stan Obrein is a middle school student in classroom 111.
+Dimple Coronado is a middle school student in classroom 102.
+Diedra Sarao is a kindergarten student in classroom 108.
+Tory Early is a kindergarten student in classroom 107.
+Rosetta Kemerer is a middle school student in classroom 102.
+
+
+// TC-12 Actual:
+<empty line>
+
+// TC-13 Actual:
+Manie Ciganek, who takes bus route 53, is assigned to the class of Rocio Fafard. Manie has a GPA of 2.79.
+
+
+// TC-14 Actual:
+Sharri Swedlund, who takes bus route 55, is assigned to the class of ROCIO FAFARD. Sharri has a GPA of 3.24.
+
+// TC-15 Actual:
+That didn't seem to work. Try one of these queries:
+        • S[tudent]: <lastname> [B[us]]
+        • T[eacher]: <lastname>
+        • B[us]: <number>
+        • G[rade]: <number> [H[igh]|L[ow]]
+        • A[verage]: <number>• I[nfo]
+        • Q[uit]
+
+
+// TC-16 Actual:
+Grade 6 has average GPA of 2.98.
+
+// TC-17 Actual:
+<reprompt>
+
+// TC-18 Actual:
+0: 0
+1: 2
+2: 13
+3: 9
+4: 15
+5: 0
+6: 21

@@ -1,0 +1,120 @@
+// CSC 365
+// Lab 1-a test suite
+
+// TC-1
+// Tests Requirements R3, R4
+// short form command name, existing student
+// expected output: Bobbie Havir is a kindergarten student assigned to the class of Gavin Hamer.
+S: HAVIR
+
+// TC-2
+// Tests Requirements R3, R4
+// short form command name, non-existing student
+// expected output: <empty line>
+S: NEMO
+
+// TC-3
+// Tests Requirments R3, R13
+// quit command
+// expected output: program terminates
+Q
+
+// TC-4
+// Tests Requirments R3, R5
+// existing student
+// expected output: Noel Racanello, who takes 
+S: Racanello Bus
+
+// TC-5
+// Tests Requirments R3, R5
+// non-existing student
+// expected output: <empty line>
+Student: Potato Bus
+
+// TC-6
+// Tests Requirments R3, R6
+// existing teacher
+// expected output: <empty line>
+Teacher: Kerbs
+
+// TC-7
+// Tests Requirments R3, R6
+// non-existing teacher
+// expected output: <empty line>
+Teacher: Potato
+
+// TC-8
+// Tests Requirments R3, R7
+// existing-grade with no entries
+// expected output: <empty line>
+Grade: 0
+
+// TC-9
+// Tests Requirments R3, R7
+// existing-grade with multiple entries
+// expected output: list all students in that given grade
+Grade: 3
+
+// TC-10
+// Tests Requirments R3, R7
+// invalid number
+// expected output: prompt the user to try another query
+Grade: Potato
+
+
+// TC-11
+// Tests Requirments R3, R8
+// existing bus
+// expected output: list grade level and classroom number of ALL students on bus 52
+B: 52
+
+
+// TC-12
+// Tests Requirments R3, R8
+// invalid argument
+// expected output: <empty line>
+Bus: Potato
+
+
+// TC-13
+// Tests Requirments R3, R9
+// lowest student in grade three
+// expected output: informtion about the lowest GPA student in grade 3
+Grade: 3 Low
+
+
+// TC-14
+// Tests Requirments R3, R9
+// highest student in grade three
+// expected output: information about the highest GPA in grade 3
+Grade: 3 High
+
+// TC-15
+// Tests Requirments R3, R9
+// invalid high/low argument
+// expected output: prompt the user to try another query
+Grade: 3 Potato
+
+
+// TC-16
+// Tests Requirments R3, R10
+// existing grade and students
+// expected output: print the number of students in each grade in ascending order
+Average: 6
+
+// TC-17
+// Tests Requirments R3, R10
+// existing grade with no students
+// expected output: <empty line>
+Average: 5
+
+// TC-18
+// Tests Requirments R3, R11
+// invalid high/low argument
+// expected output: print the number of students in each grade in ascending order
+Info
+
+
+
+
+
