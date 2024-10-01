@@ -89,6 +89,18 @@ def findGStudents(number: int, low=False, high=False):
             f"{df_found.at[max, "TFirstName"]} {df_found.at[max, "TLastName"]}. {student_first} "
             f"has a GPA of {df_found.at[max, "GPA"]}.")
 
+def findBus(busNum: int):
+    df_found = df_students[df_students['Bus'] == busNum]
+
+    if df_found.empty:
+        print('Empty')
+        return
+    
+    else:
+        for _, row in df_found.iterrows():
+            student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
+            print(f'{student_name} is a {row['Grade Level']} student in classroom {row['Classroom']}.')
+
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
 

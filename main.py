@@ -76,6 +76,19 @@ def sourceQuery(user_query: str) -> bool:
         else:
             errorCheck()
             return True
+    # B[us] <Number>
+    elif query[0] in bus_options:
+        if query_len == 2:
+            try:
+                bus_number = int(query[1])
+                findBus(bus_number)
+                return True
+            except ValueError:
+                errorCheck()
+                return True
+        else:
+            errorCheck()
+            return True
     elif query[0] in info_options:
         if query_len == 1:
             getInfo()
