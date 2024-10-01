@@ -14,9 +14,13 @@ def sourceQuery(user_query: str) -> bool:
     if query_len == 0:
         return True
     
-    student_options = {"S:", "Student:", "S"}
+    student_options = {"S", "Student"}
     bus_options = {"B", "Bus",}
     teacher_options = {"T", "Teacher"}
+    grade_options = {"G", "Grade"}
+    low_flags = {"L", "Low"}
+    high_flags = {"H", "High"}
+    avg_options = {"A", "Average"}
 
     if query[0] in student_options:
         if query_len == 2:
@@ -36,10 +40,35 @@ def sourceQuery(user_query: str) -> bool:
         else:
             errorCheck()
             return True
+    # T[eacher]: <lastname>
     elif query[0] in teacher_options:
         if query_len == 2:
             lastname = query[1].upper()
             findTStudents(lastname)
+            return True
+        else:
+            errorCheck()
+            return True
+    # G[rade]: <Number>
+    elif query[0] in grade_options:
+        if query_len == 2:
+            findGStudents(int(query[1]))
+            return True
+        elif query_len == 3:
+            if query[2] in low_flags:
+                findGStudents(int(query[1]), True, False)
+            elif query[2] in high_flags:
+                findGStudents(int(query[1]), False, True)
+            else:
+                errorCheck()
+            return True
+        else:
+            errorCheck()
+            return True
+    # A[verage]: <Number>
+    elif query[0] in avg_options:
+        if query_len == 2:
+            calcAvgGPA(int(query[1]))
             return True
         else:
             errorCheck()
