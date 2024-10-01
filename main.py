@@ -21,6 +21,7 @@ def sourceQuery(user_query: str) -> bool:
     low_flags = {"L", "Low"}
     high_flags = {"H", "High"}
     avg_options = {"A", "Average"}
+    info_options = {"I", "Info"}
 
     if query[0] in student_options:
         if query_len == 2:
@@ -73,7 +74,13 @@ def sourceQuery(user_query: str) -> bool:
         else:
             errorCheck()
             return True
-    
+    elif query[0] in info_options:
+        if query_len == 1:
+            getInfo()
+            return True
+        else:
+            errorCheck()
+            return True
     elif query[0] == "Q":
         return False
     

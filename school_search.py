@@ -97,3 +97,14 @@ def calcAvgGPA(number: str):
         avg = total / num_rows
         # .2f formats to 2 decimal places
         print(f"Grade %d has average GPA of %.2f." % (number, avg))
+
+def getInfo():
+    num_grades = 7
+    for i in range(num_grades): 
+        try:
+            total = df_students.groupby('Grade', observed="False").size()[i]
+            print(f"%d: %d" % (i, total))
+        # If the value (grade) doesn't exist, a there will be a
+        # key error
+        except KeyError:
+            print(f"%d: 0" % i)
