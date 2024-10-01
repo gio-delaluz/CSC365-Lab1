@@ -7,6 +7,13 @@ def errorCheck():
     print("That didn't seem to work. Try one of these queries:")
     printQueryCommands()
 
+def check_if_int(value: str) -> int:
+    try:
+        return int(value)
+    except:
+        errorCheck()
+        return None
+
 def sourceQuery(user_query: str) -> bool:
 
     query = user_query.split()
@@ -15,13 +22,14 @@ def sourceQuery(user_query: str) -> bool:
     if query_len == 0:
         return True
     
-    student_options = {"S", "Student"}
-    bus_options = {"B", "Bus",}
-    teacher_options = {"T", "Teacher"}
-    grade_options = {"G", "Grade"}
+    student_options = {"S", "S:", "Student", "Student:"}
+    bus_options = {"B", "B:", "Bus", "Bus"}
+    teacher_options = {"T", "T:", "Teacher", "Teacher:"}
+    grade_options = {"G", "G:", "Grade", "Grade:"}
+    avg_options = {"A", "A:", "Average", "Average:"}
+
     low_flags = {"L", "Low"}
     high_flags = {"H", "High"}
-    avg_options = {"A", "Average"}
     info_options = {"I", "Info"}
     quit_options = {"Q", "Quit"}
 
@@ -55,15 +63,19 @@ def sourceQuery(user_query: str) -> bool:
     # G[rade]: <Number>
     elif query[0] in grade_options:
         if query_len == 2:
-            findGStudents(int(query[1]))
+            grade_number = check_if_int(query[1])
+            if grade_number is not None:
+                findGStudents(grade_number)
             return True
         elif query_len == 3:
-            if query[2] in low_flags:
-                findGStudents(int(query[1]), True, False)
-            elif query[2] in high_flags:
-                findGStudents(int(query[1]), False, True)
-            else:
-                errorCheck()
+            grade_number = check_if_int(query[1])
+            if grade_number is not None:
+                if query[2] in low_flags:
+                    findGStudents(grade_number, True, False)
+                elif query[2] in high_flags:
+                    findGStudents(grade_number, False, True)
+                else:
+                    errorCheck() # check if this works properly
             return True
         else:
             errorCheck()
@@ -71,7 +83,9 @@ def sourceQuery(user_query: str) -> bool:
     # A[verage]: <Number>
     elif query[0] in avg_options:
         if query_len == 2:
-            calcAvgGPA(int(query[1]))
+            grade_number = check_if_int(query[1])
+            if grade_number is not None:
+                calcAvgGPA(grade_number)
             return True
         else:
             errorCheck()
@@ -79,13 +93,10 @@ def sourceQuery(user_query: str) -> bool:
     # B[us] <Number>
     elif query[0] in bus_options:
         if query_len == 2:
-            try:
-                bus_number = int(query[1])
+            bus_number = check_if_int(query[1])
+            if bus_number is not None:
                 findBus(bus_number)
-                return True
-            except ValueError:
-                errorCheck()
-                return True
+            return True
         else:
             errorCheck()
             return True
