@@ -17,8 +17,10 @@ def check_cols():
     return True
 
 def convert_grade_to_level(grade):
-    if 0 <= grade <= 5:
+    if grade == 0:
         return 'kindergarten'
+    elif 1 <= grade <= 5:
+        return 'elementary school'
     elif 6 <= grade <= 8:
         return 'middle school'
     elif 9 <= grade <= 12:
