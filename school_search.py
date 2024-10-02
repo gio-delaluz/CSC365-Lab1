@@ -34,6 +34,7 @@ def searchStudent(lastname: str, bus=False):
     df_found = df_students[df_students["StLastName"] == lastname]
     
     if df_found.empty:
+        print(f"No student found with the last name {lastname.lower().capitalize()}.")
         return
     else:
         # '_' means ignore index
@@ -56,16 +57,29 @@ def searchStudent(lastname: str, bus=False):
                 print(f"{student_name} is in {grade}, assigned to the class of {teacher_name}.")
 
 def findTStudents(lastname: str):
-    df_found = df_students[df_students["TLastName"] == lastname]
+    # Find the teacher by last name
+    df_found = df_teachers[df_teachers["TLastName"] == lastname]
 
+    # Check if the teacher is found
     if df_found.empty:
+        print(f"No teacher found with the last name {lastname.lower().capitalize()}.")
         return
-    else:
-        # '_' means ignore index
-        for _, row in df_found.iterrows():
-            student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-            teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
-            print(f"{student_name} is assigned to the class of {teacher_name}.")
+
+    # For each teacher found (in case of duplicates)
+    for _, teacher_row in df_found.iterrows():
+        teacher_name = f"{teacher_row['TFirstName'].lower().capitalize()} {teacher_row['TLastName'].lower().capitalize()}"
+        classroom = teacher_row['Classroom']
+
+        # Find students assigned to this teacher's classroom
+        students_in_class = df_students[df_students['Classroom'] == classroom]
+
+        if students_in_class.empty:
+            print(f"No students found for instructor {teacher_name} in classroom {classroom}.")
+        else:
+            print(f"Students assigned to instructor {teacher_name} in classroom {classroom}:")
+            for _, student_row in students_in_class.iterrows():
+                student_name = f"{student_row['StFirstName'].lower().capitalize()}  {student_row['StLastName'].lower().capitalize()}"
+                print(f"\t{student_name}")
 
 def findGStudents(number: int, low=False, high=False):
     df_found = df_students[df_students["Grade"] == number]
@@ -75,6 +89,7 @@ def findGStudents(number: int, low=False, high=False):
         grade = f"Grade {number}"
 
     if df_found.empty:
+        print(f'No student found with the grade {number}')
         return
     else:
         if not low and not high:
@@ -117,6 +132,7 @@ def findBus(busNum: int):
     df_found = df_students[df_students['Bus'] == busNum]
 
     if df_found.empty:
+        print(f'No student found on Bus #{busNum}')
         return
     
     else:
