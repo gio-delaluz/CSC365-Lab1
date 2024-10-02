@@ -40,7 +40,10 @@ def searchStudent(lastname: str, bus=False):
         for _, row in df_found.iterrows():
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
             if bus:
-                print(f"{student_name}, who takes bus route {row['Bus']}.")
+                if row['Bus'] == 0:
+                    print(f"{student_name} does not ride the bus to school.")
+                else:
+                    print(f"{student_name}, who takes bus route {row['Bus']}.")
             else:
                 if row['Grade'] == 0:
                     grade = "Kindergarten"
