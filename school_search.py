@@ -1,7 +1,7 @@
 import pandas as pd
 
 df_students = pd.read_csv("list.txt", sep=",", header=None,
-            names=["StLastName", "StFirstName", "Grade", "Classroom","Bus", "GPA", "TLastName", "TFirstName"])
+            names=["StLastName", "StFirstName", "Grade", "Classroom","Bus", "GPA"])
 
 df_teachers = pd.read_csv("teachers.txt", sep=",", header=None, 
             names=['TLastName', 'TFirstName', 'Classroom'])
