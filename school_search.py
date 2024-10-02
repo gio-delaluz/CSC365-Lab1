@@ -45,7 +45,7 @@ def searchStudent(lastname: str, bus=False):
                 df_teacher = df_teachers[df_teachers['Classroom'] == row['Classroom']]
                 teacher = df_teacher.iloc[0]
                 teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
-                print(f"{student_name} is a {row['Grade Level']} student assigned to the class of {teacher_name}.")
+                print(f"{student_name} is in Grade {row['Grade']}, assigned to the class of {teacher_name}.")
 
 def findTStudents(lastname: str):
     df_found = df_students[df_students["TLastName"] == lastname]
