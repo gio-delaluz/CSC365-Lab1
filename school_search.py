@@ -15,7 +15,7 @@ def check_cols():
     if len(df_students.columns) != 6 or len(df_teachers.columns) != 3:
         return False
     
-    df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
+    # df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
     return True
 
 # def convert_grade_to_level(grade):
