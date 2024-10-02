@@ -3,6 +3,8 @@ import pandas as pd
 df_students = pd.read_csv("students.txt", sep=",", header=None,
             names=["StLastName", "StFirstName", "Grade", "Classroom","Bus", "GPA", "TLastName", "TFirstName"])
 
+df_teachers = pd.read_csv("teachers.txt", sep=",", header=None, 
+            names=['TLastName', 'TFirstName', 'Classroom'])
 
 # Convert Grade, Classroom, and Bus into categorical variables
 df_students['Grade'] = df_students['Grade'].astype('category')
