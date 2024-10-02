@@ -42,10 +42,15 @@ def searchStudent(lastname: str, bus=False):
             if bus:
                 print(f"{student_name}, who takes bus route {row['Bus']}.")
             else:
+                if row['Grade'] == 0:
+                    grade = "Kindergarten"
+                else:
+                    grade = f"Grade {row['Grade']}"
+
                 df_teacher = df_teachers[df_teachers['Classroom'] == row['Classroom']]
                 teacher = df_teacher.iloc[0]
                 teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
-                print(f"{student_name} is in Grade {row['Grade']}, assigned to the class of {teacher_name}.")
+                print(f"{student_name} is in {grade}, assigned to the class of {teacher_name}.")
 
 def findTStudents(lastname: str):
     df_found = df_students[df_students["TLastName"] == lastname]
@@ -61,6 +66,10 @@ def findTStudents(lastname: str):
 
 def findGStudents(number: int, low=False, high=False):
     df_found = df_students[df_students["Grade"] == number]
+    if number == 0:
+        grade = "Kindergarten"
+    else:
+        grade = f"Grade {number}"
 
     if df_found.empty:
         return
@@ -69,7 +78,7 @@ def findGStudents(number: int, low=False, high=False):
             # '_' means ignore index
             for _, row in df_found.iterrows():
                 student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-                print(f"{student_name} is in grade {row["Grade"]}.")
+                print(f"{student_name} is in {grade}.")
         elif low:
             # Row number of lowest GPA
             min = df_found["GPA"].idxmin()
@@ -109,11 +118,20 @@ def findBus(busNum: int):
     
     else:
         for _, row in df_found.iterrows():
+            if row['Grade'] == 0:
+                grade = "Kindergarten"
+            else:
+                grade = f"Grade {row['Grade']}"
+
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-            print(f'{student_name} is in Grade {row['Grade']}, assigned to classroom {row['Classroom']}.')
+            print(f'{student_name} is in {grade}, assigned to classroom {row['Classroom']}.')
 
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
+    if number == 0:
+        grade = "Kindergarten"
+    else:
+        grade = f"Grade {number}"
 
     if df_found.empty:
         return
@@ -125,15 +143,15 @@ def calcAvgGPA(number: str):
             total += row["GPA"]
         avg = total / num_rows
         # .2f formats to 2 decimal places
-        print(f"Grade %d has average GPA of %.2f." % (number, avg))
+        print(f"{grade} has average GPA of %.2f." % (avg))
 
 def getInfo():
     num_grades = 7
     for i in range(num_grades): 
         try:
             total = df_students.groupby('Grade', observed="False").size()[i]
-            print(f"%d: %d" % (i, total))
+            print(f"{i}: {total}")
         # If the value (grade) doesn't exist, a there will be a
         # key error
         except KeyError:
-            print(f"%d: 0" % i)
+            print(f"{i}: 0")
