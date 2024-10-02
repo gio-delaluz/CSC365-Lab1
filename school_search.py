@@ -145,6 +145,30 @@ def findBus(busNum: int):
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
             print(f'{student_name} is in {grade}, assigned to classroom {row['Classroom']}.')
 
+def findClassroomStudents(class_num: int):
+    df_found = df_students[df_students['Classroom'] == class_num]
+
+    if df_found.empty:
+        print(f'No student(s) found in Classroom #{class_num}')
+        return
+    else:
+        print(f'Students in Classroom #{class_num}')
+        for _, row in df_found.iterrows():
+            student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
+            print(f'\t{student_name}')
+
+def findClassroomTeachers(class_num: int):
+    df_found = df_teachers[df_teachers["Classroom"] == class_num]
+
+    if df_found.empty:
+        print(f'No teacher(s) found for Classroom #{class_num}')
+        return
+    else:
+        print(f'Teacher(s) of Classroom #{class_num}')
+        for _, row in df_found.iterrows():
+            teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
+            print(f'\t{teacher_name}')
+            
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
     if number == 0:

@@ -1,7 +1,7 @@
 from school_search import *
 
 def printQueryCommands():
-    print("\t• S[tudent]: <lastname> [B[us]]\n\t• T[eacher]: <lastname>\n\t• B[us]: <number>\n\t• G[rade]: <number> [H[igh]|L[ow]]\n\t• A[verage]: <number>• I[nfo]\n\t• Q[uit]")
+    print("\t• S[tudent]: <lastname> [B[us]]\n\t• T[eacher]: <lastname>\n\t• B[us]: <number>\n\t• G[rade]: <number> [H[igh]|L[ow]]\n\t• A[verage]: <number>\n\t• I[nfo]\n\t• Q[uit]")
 
 def errorCheck():
     print("That didn't seem to work. Try one of these queries:")
@@ -27,6 +27,7 @@ def sourceQuery(user_query: str) -> bool:
     teacher_options = {"T", "T:", "Teacher", "Teacher:"}
     grade_options = {"G", "G:", "Grade", "Grade:"}
     avg_options = {"A", "A:", "Average", "Average:"}
+    class_options = {"C", "C:", "Classroom", "Classroom:"}
 
     low_flags = {"L", "Low"}
     high_flags = {"H", "High"}
@@ -96,6 +97,24 @@ def sourceQuery(user_query: str) -> bool:
             bus_number = check_if_int(query[1])
             if bus_number is not None:
                 findBus(bus_number)
+            return True
+        else:
+            errorCheck()
+            return True
+    # C[lassroom]: <Number> T[eacher]
+    elif query[0] in class_options:
+        if query_len == 2:
+            grade_level = check_if_int(query[1])
+            if grade_level is not None:
+                findClassroomStudents(grade_level)
+            return True
+        elif query_len == 3:
+            grade_level = check_if_int(query[1])
+            if grade_level is not None:
+                if query[2] == 'T' or query[2] == 'Teacher':
+                    findClassroomTeachers(grade_level)
+                else:
+                    errorCheck() # check if this works properly
             return True
         else:
             errorCheck()
