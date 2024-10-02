@@ -10,7 +10,7 @@ df_students['Classroom'] = df_students['Classroom'].astype('category')
 df_students['Bus'] = df_students['Bus'].astype('category')
 
 def check_cols():
-    if len(df_students.columns) != 8:
+    if len(df_students.columns) != 6 or len(df_teachers.columns) != 3:
         return False
     
     df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
