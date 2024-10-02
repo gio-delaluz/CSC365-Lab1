@@ -18,17 +18,17 @@ def check_cols():
     df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
     return True
 
-def convert_grade_to_level(grade):
-    if grade == 0:
-        return 'kindergarten'
-    elif 1 <= grade <= 5:
-        return 'elementary school'
-    elif 6 <= grade <= 8:
-        return 'middle school'
-    elif 9 <= grade <= 12:
-        return 'high school'
-    else:
-        return 'unknown'
+# def convert_grade_to_level(grade):
+    # if grade == 0:
+    #     return 'kindergarten'
+    # elif 1 <= grade <= 5:
+    #     return 'elementary school'
+    # elif 6 <= grade <= 8:
+    #     return 'middle school'
+    # elif 9 <= grade <= 12:
+    #     return 'high school'
+    # else:
+    #     return 'unknown'
 
 def searchStudent(lastname: str, bus=False):
     df_found = df_students[df_students["StLastName"] == lastname]
@@ -110,7 +110,7 @@ def findBus(busNum: int):
     else:
         for _, row in df_found.iterrows():
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-            print(f'{student_name} is a {row['Grade Level']} student in classroom {row['Classroom']}.')
+            print(f'{student_name} is in Grade {row['Grade']}, assigned to classroom {row['Classroom']}.')
 
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
