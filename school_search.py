@@ -42,7 +42,9 @@ def searchStudent(lastname: str, bus=False):
             if bus:
                 print(f"{student_name}, who takes bus route {row['Bus']}.")
             else:
-                teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
+                df_teacher = df_teachers[df_teachers['Classroom'] == row['Classroom']]
+                teacher = df_teacher.iloc[0]
+                teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
                 print(f"{student_name} is a {row['Grade Level']} student assigned to the class of {teacher_name}.")
 
 def findTStudents(lastname: str):
