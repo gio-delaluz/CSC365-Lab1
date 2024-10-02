@@ -15,20 +15,20 @@ def check_cols():
     if len(df_students.columns) != 6 or len(df_teachers.columns) != 3:
         return False
     
-    df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
+    # df_students['Grade Level'] = df_students['Grade'].apply(convert_grade_to_level)
     return True
 
-def convert_grade_to_level(grade):
-    if grade == 0:
-        return 'kindergarten'
-    elif 1 <= grade <= 5:
-        return 'elementary school'
-    elif 6 <= grade <= 8:
-        return 'middle school'
-    elif 9 <= grade <= 12:
-        return 'high school'
-    else:
-        return 'unknown'
+# def convert_grade_to_level(grade):
+    # if grade == 0:
+    #     return 'kindergarten'
+    # elif 1 <= grade <= 5:
+    #     return 'elementary school'
+    # elif 6 <= grade <= 8:
+    #     return 'middle school'
+    # elif 9 <= grade <= 12:
+    #     return 'high school'
+    # else:
+    #     return 'unknown'
 
 def searchStudent(lastname: str, bus=False):
     df_found = df_students[df_students["StLastName"] == lastname]
@@ -40,12 +40,20 @@ def searchStudent(lastname: str, bus=False):
         for _, row in df_found.iterrows():
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
             if bus:
-                print(f"{student_name}, who takes bus route {row['Bus']}.")
+                if row['Bus'] == 0:
+                    print(f"{student_name} does not ride the bus to school.")
+                else:
+                    print(f"{student_name}, who takes bus route {row['Bus']}.")
             else:
+                if row['Grade'] == 0:
+                    grade = "Kindergarten"
+                else:
+                    grade = f"Grade {row['Grade']}"
+
                 df_teacher = df_teachers[df_teachers['Classroom'] == row['Classroom']]
                 teacher = df_teacher.iloc[0]
                 teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
-                print(f"{student_name} is a {row['Grade Level']} student assigned to the class of {teacher_name}.")
+                print(f"{student_name} is in {grade}, assigned to the class of {teacher_name}.")
 
 def findTStudents(lastname: str):
     df_found = df_students[df_students["TLastName"] == lastname]
@@ -61,6 +69,10 @@ def findTStudents(lastname: str):
 
 def findGStudents(number: int, low=False, high=False):
     df_found = df_students[df_students["Grade"] == number]
+    if number == 0:
+        grade = "Kindergarten"
+    else:
+        grade = f"Grade {number}"
 
     if df_found.empty:
         return
@@ -69,14 +81,17 @@ def findGStudents(number: int, low=False, high=False):
             # '_' means ignore index
             for _, row in df_found.iterrows():
                 student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-                print(f"{student_name} is in grade {row["Grade"]}.")
+                print(f"{student_name} is in {grade}.")
         elif low:
             # Row number of lowest GPA
             min = df_found["GPA"].idxmin()
 
             student_first = f"{df_found.at[min, "StFirstName"].lower().capitalize()}"
             student_last = f"{df_found.at[min, "StLastName"].lower().capitalize()}"
-            teacher_name = f"{df_found.at[min, "TFirstName"].lower().capitalize()} {df_found.at[min, "TLastName"].lower().capitalize()}"
+
+            df_teacher = df_teachers[df_teachers['Classroom'] == df_found.at[min, "Classroom"]]
+            teacher = df_teacher.iloc[0]
+            teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
 
             print(f"{student_first} {student_last}, "
             f"who takes bus route {df_found.at[min, "Bus"]}, is assigned to the class of "
@@ -88,11 +103,14 @@ def findGStudents(number: int, low=False, high=False):
 
             student_first = f"{df_found.at[max, "StFirstName"].lower().capitalize()}"
             student_last = f"{df_found.at[max, "StLastName"].lower().capitalize()}"
-            teacher_name = f"{df_found.at[max, "TFirstName"].lower().capitalize()} {df_found.at[max, "TLastName"].lower().capitalize()}"
+            
+            df_teacher = df_teachers[df_teachers['Classroom'] == df_found.at[max, "Classroom"]]
+            teacher = df_teacher.iloc[0]
+            teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
 
             print(f"{student_first} {student_last}, "
             f"who takes bus route {df_found.at[max, "Bus"]}, is assigned to the class of "
-            f"{df_found.at[max, "TFirstName"]} {df_found.at[max, "TLastName"]}. {student_first} "
+            f"{teacher_name}. {student_first} "
             f"has a GPA of {df_found.at[max, "GPA"]}.")
 
 def findBus(busNum: int):
@@ -103,11 +121,20 @@ def findBus(busNum: int):
     
     else:
         for _, row in df_found.iterrows():
+            if row['Grade'] == 0:
+                grade = "Kindergarten"
+            else:
+                grade = f"Grade {row['Grade']}"
+
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-            print(f'{student_name} is a {row['Grade Level']} student in classroom {row['Classroom']}.')
+            print(f'{student_name} is in {grade}, assigned to classroom {row['Classroom']}.')
 
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
+    if number == 0:
+        grade = "Kindergarten"
+    else:
+        grade = f"Grade {number}"
 
     if df_found.empty:
         return
@@ -119,15 +146,15 @@ def calcAvgGPA(number: str):
             total += row["GPA"]
         avg = total / num_rows
         # .2f formats to 2 decimal places
-        print(f"Grade %d has average GPA of %.2f." % (number, avg))
+        print(f"{grade} has average GPA of %.2f." % (avg))
 
 def getInfo():
     num_grades = 7
     for i in range(num_grades): 
         try:
             total = df_students.groupby('Grade', observed="False").size()[i]
-            print(f"%d: %d" % (i, total))
+            print(f"{i}: {total}")
         # If the value (grade) doesn't exist, a there will be a
         # key error
         except KeyError:
-            print(f"%d: 0" % i)
+            print(f"{i}: 0")

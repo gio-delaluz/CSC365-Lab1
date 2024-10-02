@@ -89,7 +89,7 @@ def sourceQuery(user_query: str) -> bool:
             return True
         else:
             errorCheck()
-            return True
+        return True
     # B[us] <Number>
     elif query[0] in bus_options:
         if query_len == 2:
