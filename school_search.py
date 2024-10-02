@@ -76,7 +76,10 @@ def findGStudents(number: int, low=False, high=False):
 
             student_first = f"{df_found.at[min, "StFirstName"].lower().capitalize()}"
             student_last = f"{df_found.at[min, "StLastName"].lower().capitalize()}"
-            teacher_name = f"{df_found.at[min, "TFirstName"].lower().capitalize()} {df_found.at[min, "TLastName"].lower().capitalize()}"
+
+            df_teacher = df_teachers[df_teachers['Classroom'] == df_found.at[min, "Classroom"]]
+            teacher = df_teacher.iloc[0]
+            teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
 
             print(f"{student_first} {student_last}, "
             f"who takes bus route {df_found.at[min, "Bus"]}, is assigned to the class of "
@@ -88,11 +91,14 @@ def findGStudents(number: int, low=False, high=False):
 
             student_first = f"{df_found.at[max, "StFirstName"].lower().capitalize()}"
             student_last = f"{df_found.at[max, "StLastName"].lower().capitalize()}"
-            teacher_name = f"{df_found.at[max, "TFirstName"].lower().capitalize()} {df_found.at[max, "TLastName"].lower().capitalize()}"
+            
+            df_teacher = df_teachers[df_teachers['Classroom'] == df_found.at[max, "Classroom"]]
+            teacher = df_teacher.iloc[0]
+            teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
 
             print(f"{student_first} {student_last}, "
             f"who takes bus route {df_found.at[max, "Bus"]}, is assigned to the class of "
-            f"{df_found.at[max, "TFirstName"]} {df_found.at[max, "TLastName"]}. {student_first} "
+            f"{teacher_name}. {student_first} "
             f"has a GPA of {df_found.at[max, "GPA"]}.")
 
 def findBus(busNum: int):
