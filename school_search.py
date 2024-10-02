@@ -1,6 +1,6 @@
 import pandas as pd
 
-df_students = pd.read_csv("lst.txt", sep=",", header=None,
+df_students = pd.read_csv("list.txt", sep=",", header=None,
             names=["StLastName", "StFirstName", "Grade", "Classroom","Bus", "GPA", "TLastName", "TFirstName"])
 
 df_teachers = pd.read_csv("teachers.txt", sep=",", header=None, 
