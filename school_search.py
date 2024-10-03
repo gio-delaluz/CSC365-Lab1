@@ -197,8 +197,7 @@ def getEnrollment():
             print(f"\tRoom #{classroom}: {count}")
     except:
         print("Encountered an error.")
-        return
-    
+        
 def getInfo():
     num_grades = 7
     for i in range(num_grades): 
