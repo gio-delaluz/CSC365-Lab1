@@ -168,7 +168,7 @@ def findClassroomTeachers(class_num: int):
         for _, row in df_found.iterrows():
             teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
             print(f'\t{teacher_name}')
-            
+
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
     if number == 0:
@@ -188,6 +188,17 @@ def calcAvgGPA(number: str):
         # .2f formats to 2 decimal places
         print(f"{grade} has average GPA of %.2f." % (avg))
 
+def getEnrollment():
+    try:
+        print("Classroom Enrollment Status:")
+        # Enrollment by classroom using groupby
+        enrollment_by_classroom = df_students.groupby("Classroom", observed=False).size().sort_index()
+        for classroom, count in enrollment_by_classroom.items():
+            print(f"\tRoom #{classroom}: {count}")
+    except:
+        print("Encountered an error.")
+        return
+    
 def getInfo():
     num_grades = 7
     for i in range(num_grades): 
