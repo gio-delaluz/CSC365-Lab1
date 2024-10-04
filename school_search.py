@@ -171,12 +171,17 @@ def findClassroomTeachers(class_num: int):
 
 def findGradeTeachers(number: int):
     df_found = df_students[df_students["Grade"] == number]
-    df_filtered = df_found.drop_duplicates(subset="Classroom")
 
     if number == 0:
         grade = "Kindergarten"
     else:
         grade = f"Grade {number}"
+
+    if df_found.empty:
+        print(f"No teacher(s) found for {grade}")
+        return
+
+    df_filtered = df_found.drop_duplicates(subset="Classroom")
 
     print(f"Teachers for {grade}:")
     for _, row in df_filtered.iterrows():
