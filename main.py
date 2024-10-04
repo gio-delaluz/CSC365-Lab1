@@ -35,6 +35,7 @@ def sourceQuery(user_query: str) -> bool:
     quit_options = {"Q", "Quit"}
     enrollment_options = {"E", "Enrollment"}
 
+
     if query[0] in student_options:
         if query_len == 2:
             lastname = query[1].upper()
@@ -85,12 +86,18 @@ def sourceQuery(user_query: str) -> bool:
         else:
             errorCheck()
             return True
-    # A[verage]: <Number>
+    # A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
     elif query[0] in avg_options:
         if query_len == 2:
             grade_number = check_if_int(query[1])
             if grade_number is not None:
-                calcAvgGPA(grade_number)
+                calcAvgGPA_Grade(grade_number)
+            elif query[1] == "Teacher" or  query[1] == "T":
+                calcAvgGPA_Teacher()
+            elif query[1] == "B" or query[1] == "Bus":
+                calcAvgGPA_Bus()
+            elif query[1] == "A" or query[1] == "All":
+                calcAvgGPA_All()
             return True
         else:
             errorCheck()
@@ -123,6 +130,7 @@ def sourceQuery(user_query: str) -> bool:
         else:
             errorCheck()
             return True
+    
     elif query[0] in enrollment_options:
         if query_len == 1:
             getEnrollment()

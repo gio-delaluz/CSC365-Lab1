@@ -192,7 +192,7 @@ def findGradeTeachers(number: int):
             print(f"\t- {teacher_name}")
 
 
-def calcAvgGPA(number: str):
+def calcAvgGPA_Grade(number: str):
     df_found = df_students[df_students["Grade"] == number]
     if number == 0:
         grade = "Kindergarten"
