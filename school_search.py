@@ -181,9 +181,10 @@ def findGradeTeachers(number: int):
     print(f"Teachers for {grade}:")
     for _, row in df_filtered.iterrows():
         # print(type(row))
-        temp = df_teachers[df_teachers["Classroom"] == row["Classroom"]].iloc[0]
-        teacher_name = f"{temp["TFirstName"].lower().capitalize()} {temp["TLastName"].lower().capitalize()}"
-        print(f"\t- {teacher_name}")
+        temp = df_teachers[df_teachers["Classroom"] == row["Classroom"]]
+        for _, trow in temp.iterrows():
+            teacher_name = f"{trow["TFirstName"].lower().capitalize()} {trow["TLastName"].lower().capitalize()}"
+            print(f"\t- {teacher_name}")
 
 
 def calcAvgGPA(number: str):
