@@ -119,5 +119,53 @@ Info
 // text file has number of columns other than 8
 // expected output: <program immediately exits upon running>
 
+------------------------------------------------------------------------------------
+// Lab 1-b test suite
 
+// TC-20
+// Tests Requirement R3 NR1
+// valid class number
+// expected output: list all students in the given classroom
+C 107
 
+// TC-21
+// Tests Requirement R3 NR1
+// invalid class number
+// expected output: No student found in Classroom #9999
+C 9999
+
+// TC-22
+// Tests Requirement R3 NR2
+// valid class number
+// expected output: Teacher(s) of Classroom #102
+C 102 T
+
+// TC-23
+// Tests Requirement R3 NR2
+// invalid class number
+// expected output: No teacher(s) found for Classroom #9999
+C 9999 T
+
+// TC-24
+// Tests Requirement R3 NR3
+// valid grade
+// expected output: lists all teachers that teach grade 2
+G 2 T
+
+// TC-25
+// Tests Requirement R3 NR3
+// invalid grade
+// expected output: No teacher(s) found for Grade 10
+G 77 T
+
+// TC-26
+// Tests Requirement R3 NR4
+// valid input
+// expected output: lists all classrooms in ascending order followed by enrollment  
+E
+
+// TC-27
+// Tests Requirements R3 NR4
+// invalid additional input
+// expected output: prompt the user to try another query
+E 2

@@ -98,3 +98,59 @@ Grade 6 has average GPA of 2.98.
 
 // TC-19 Actual:
 <program exists immediately upon running>
+
+------------------------------------------------------------------------------------
+// Lab 1-b 
+
+// TC-20 Actual:
+Students in Classroom #107
+        Xuan Cookus
+        Shante Elhaddad
+        Sharri Swedlund
+        Manie Ciganek
+        Tomas Covington
+        Tory Early
+        Lela Linhart
+
+// TC-21 Actual:
+No student found with the grade 0
+
+// TC-22 Actual:
+Teacher(s) of Classroom #102
+
+
+// TC-23 Actual:
+No teacher(s) found for Classroom #9999
+
+// TC-24 Actual:
+Teachers for Grade 2:
+        - Gale Steib
+        - Gavin Hamer
+
+// TC-25 Actual:
+No teacher(s) found for Grade 77
+
+// TC-26 Actual:
+Classroom Enrollment Status:
+        Room #101: 1
+        Room #102: 5
+        Room #103: 2
+        Room #104: 2
+        Room #105: 6
+        Room #106: 2
+        Room #107: 7
+        Room #108: 11
+        Room #109: 5
+        Room #110: 2
+        Room #111: 9
+        Room #112: 8
+
+// TC-27 Actual:
+That didn't seem to work. Try one of these queries:
+        • S[tudent]: <lastname> [B[us]]
+        • T[eacher]: <lastname>
+        • B[us]: <number>
+        • G[rade]: <number> [H[igh]|L[ow]]
+        • A[verage]: <number>
+        • I[nfo]
+        • Q[uit]
