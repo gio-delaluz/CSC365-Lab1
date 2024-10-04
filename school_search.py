@@ -169,6 +169,23 @@ def findClassroomTeachers(class_num: int):
             teacher_name = f"{row['TFirstName'].lower().capitalize()} {row['TLastName'].lower().capitalize()}"
             print(f'\t{teacher_name}')
 
+def findGradeTeachers(number: int):
+    df_found = df_students[df_students["Grade"] == number]
+    df_filtered = df_found.drop_duplicates(subset="Classroom")
+
+    if number == 0:
+        grade = "Kindergarten"
+    else:
+        grade = f"Grade {number}"
+
+    print(f"Teachers for {grade}:")
+    for _, row in df_filtered.iterrows():
+        # print(type(row))
+        temp = df_teachers[df_teachers["Classroom"] == row["Classroom"]].iloc[0]
+        teacher_name = f"{temp["TFirstName"].lower().capitalize()} {temp["TLastName"].lower().capitalize()}"
+        print(f"\t- {teacher_name}")
+
+
 def calcAvgGPA(number: str):
     df_found = df_students[df_students["Grade"] == number]
     if number == 0:

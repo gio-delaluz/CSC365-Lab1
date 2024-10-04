@@ -76,6 +76,9 @@ def sourceQuery(user_query: str) -> bool:
                     findGStudents(grade_number, True, False)
                 elif query[2] in high_flags:
                     findGStudents(grade_number, False, True)
+                # G[rade]: <Number> [T[eacher]]
+                elif query[2] in teacher_options:
+                    findGradeTeachers(grade_number)
                 else:
                     errorCheck() # check if this works properly
             return True
