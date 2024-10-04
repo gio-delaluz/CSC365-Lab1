@@ -4,7 +4,7 @@
 // TC-1
 // Tests Requirements R3, R4
 // short form command name, existing student
-// expected output: Bobbie Havir is a kindergarten student assigned to the class of Gavin Hamer.
+// expected output: Bobbie Havir is a Grade 2 student assigned to the class of Gavin Hamer.
 S: HAVIR
 
 // TC-2

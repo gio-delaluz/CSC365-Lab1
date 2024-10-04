@@ -54,7 +54,7 @@ def searchStudent(lastname: str, bus=False):
                 df_teacher = df_teachers[df_teachers['Classroom'] == row['Classroom']]
                 teacher = df_teacher.iloc[0]
                 teacher_name = f"{teacher['TFirstName'].lower().capitalize()} {teacher['TLastName'].lower().capitalize()}"
-                print(f"{student_name} is in {grade}, assigned to the class of {teacher_name}.")
+                print(f"{student_name} is a {grade} student assigned to the class of {teacher_name}.")
 
 def findTStudents(lastname: str):
     # Find the teacher by last name
@@ -143,7 +143,7 @@ def findBus(busNum: int):
                 grade = f"Grade {row['Grade']}"
 
             student_name = f"{row['StFirstName'].lower().capitalize()} {row['StLastName'].lower().capitalize()}"
-            print(f'{student_name} is in {grade}, assigned to classroom {row['Classroom']}.')
+            print(f'{student_name} is a {grade} student assigned to classroom {row['Classroom']}.')
 
 def findClassroomStudents(class_num: int):
     df_found = df_students[df_students['Classroom'] == class_num]

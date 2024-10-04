@@ -2,7 +2,7 @@
 // Lab 1-a test suite
 
 // TC-1 Actual: 
-Bobbie Havir is a kindergarten student assigned to the class of Gavin Hamer.
+Bobbie Havir is a Grade 2 student assigned to the class of Gavin Hamer.
 
 // TC-2 Actual:
 <empty line>
@@ -51,14 +51,14 @@ That didn't seem to work. Try one of these queries:
 
 
 // TC-11 Actual:
-Xuan Cookus is a kindergarten student in classroom 107.
-Shante Elhaddad is a kindergarten student in classroom 107.
-Devin Immerman is a kindergarten student in classroom 105.
-Stan Obrein is a middle school student in classroom 111.
-Dimple Coronado is a middle school student in classroom 102.
-Diedra Sarao is a kindergarten student in classroom 108.
-Tory Early is a kindergarten student in classroom 107.
-Rosetta Kemerer is a middle school student in classroom 102.
+Xuan Cookus is a Grade 3 student assigned to classroom 107.
+Shante Elhaddad is a Grade 3 student assigned to classroom 107.
+Devin Immerman is a Grade 4 student assigned to classroom 105.
+Stan Obrein is a Grade 6 student assigned to classroom 111.
+Dimple Coronado is a Grade 6 student assigned to classroom 102.
+Diedra Sarao is a Grade 2 student assigned to classroom 108.
+Tory Early is a Grade 3 student assigned to classroom 107.
+Rosetta Kemerer is a Grade 6 student assigned to classroom 102.
 
 
 // TC-12 Actual:
@@ -69,7 +69,7 @@ Manie Ciganek, who takes bus route 53, is assigned to the class of Rocio Fafard.
 
 
 // TC-14 Actual:
-Sharri Swedlund, who takes bus route 55, is assigned to the class of ROCIO FAFARD. Sharri has a GPA of 3.24.
+Sharri Swedlund, who takes bus route 55, is assigned to the class of Rocio Fafarad. Sharri has a GPA of 3.24.
 
 // TC-15 Actual:
 That didn't seem to work. Try one of these queries:
