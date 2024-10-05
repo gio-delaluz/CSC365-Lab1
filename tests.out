@@ -46,7 +46,9 @@ That didn't seem to work. Try one of these queries:
         • T[eacher]: <lastname>
         • B[us]: <number>
         • G[rade]: <number> [H[igh]|L[ow]]
-        • A[verage]: <number>• I[nfo]
+        • A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
+        • C[lassroom]: <Number> T[eacher]
+        • I[nfo]
         • Q[uit]
 
 
@@ -77,7 +79,9 @@ That didn't seem to work. Try one of these queries:
         • T[eacher]: <lastname>
         • B[us]: <number>
         • G[rade]: <number> [H[igh]|L[ow]]
-        • A[verage]: <number>• I[nfo]
+        • A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
+        • C[lassroom]: <Number> T[eacher]
+        • I[nfo]
         • Q[uit]
 
 
@@ -151,6 +155,54 @@ That didn't seem to work. Try one of these queries:
         • T[eacher]: <lastname>
         • B[us]: <number>
         • G[rade]: <number> [H[igh]|L[ow]]
-        • A[verage]: <number>
+        • A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
+        • C[lassroom]: <Number> T[eacher]
+        • I[nfo]
+        • Q[uit]
+
+// TC-28 Actual:
+Avg. Class GPA by Teacher:
+        Gale Steib -- Avg. GPA: 2.90 -- Total: 2
+        Reuben Cool -- Avg. GPA: 2.91 -- Total: 1
+        Jed Hantz -- Avg. GPA: 2.91 -- Total: 6
+        Gavin Hamer -- Avg. GPA: 2.95 -- Total: 11
+        Jae Gambrel -- Avg. GPA: 2.96 -- Total: 5
+        Nancy Nistendirk -- Avg. GPA: 2.96 -- Total: 9
+        Benito Kerbs -- Avg. GPA: 2.98 -- Total: 5
+        Perla Chionchio -- Avg. GPA: 2.99 -- Total: 8
+        Adolph Falker -- Avg. GPA: 3.00 -- Total: 2
+        Rocio Fafard -- Avg. GPA: 3.01 -- Total: 7
+        Luz Bodziony -- Avg. GPA: 3.09 -- Total: 2
+        Jonathan Alpert -- Avg. GPA: 3.17 -- Total: 2
+
+// TC-29 Actual:
+That didn't seem to work. Try one of these queries:
+        • S[tudent]: <lastname> [B[us]]
+        • T[eacher]: <lastname>
+        • B[us]: <number>
+        • G[rade]: <number> [H[igh]|L[ow]]
+        • A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
+        • C[lassroom]: <Number> T[eacher]
+        • I[nfo]
+        • Q[uit]
+
+// TC-30 Actual:
+Avg. Class GPA by Bus Route:
+        Bus Route 52 -- Avg. GPA: 2.88 -- Total: 8
+        Bus Route 56 -- Avg. GPA: 2.92 -- Total: 6
+        Bus Route 54 -- Avg. GPA: 2.94 -- Total: 12
+        Bus Route 0 -- Avg. GPA: 2.95 -- Total: 8
+        Bus Route 51 -- Avg. GPA: 3.02 -- Total: 8
+        Bus Route 55 -- Avg. GPA: 3.04 -- Total: 9
+        Bus Route 53 -- Avg. GPA: 3.06 -- Total: 9
+
+// TC-31 Actual:
+That didn't seem to work. Try one of these queries:
+        • S[tudent]: <lastname> [B[us]]
+        • T[eacher]: <lastname>
+        • B[us]: <number>
+        • G[rade]: <number> [H[igh]|L[ow]]
+        • A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
+        • C[lassroom]: <Number> T[eacher]
         • I[nfo]
         • Q[uit]

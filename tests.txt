@@ -169,3 +169,27 @@ E
 // invalid additional input
 // expected output: prompt the user to try another query
 E 2
+
+// TC-28
+// Test Requirements R3 NR5
+// valid avg gpa by teacher
+// expected output: list the avg teachers by gpa
+Average: Teacher
+
+// TC-29
+// Test Requirements R3 NR5
+// invalid avg gpa by teacher
+// expected output: raise errorCheck()
+Average: Teach
+
+// TC-30
+// Test Requirements R3 NR5
+// valid avg gpa by bus
+// expected output: list the avg gpa by bus
+Average: Bus
+
+// TC-31
+// Test Requirements R3 NR5
+// invalid avg gpa by bus
+// expected output: raise errorCheck()
+Average: Boose

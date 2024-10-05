@@ -1,7 +1,7 @@
 from school_search import *
 
 def printQueryCommands():
-    print("\t• S[tudent]: <lastname> [B[us]]\n\t• T[eacher]: <lastname>\n\t• B[us]: <number>\n\t• G[rade]: <number> [H[igh]|L[ow]]\n\t• A[verage]: <number>\n\t• I[nfo]\n\t• Q[uit]")
+    print("\t• S[tudent]: <lastname> [B[us]]\n\t• T[eacher]: <lastname>\n\t• B[us]: <number>\n\t• G[rade]: <number> [H[igh]|L[ow]]\n\t• A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]\n\t• C[lassroom]: <Number> T[eacher]\n\t• I[nfo]\n\t• Q[uit]")
 
 def errorCheck():
     print("That didn't seem to work. Try one of these queries:")
@@ -89,15 +89,14 @@ def sourceQuery(user_query: str) -> bool:
     # A[verage]: [<N[umber]><T[eacher]><B[us]><A[ll]>]
     elif query[0] in avg_options:
         if query_len == 2:
-            grade_number = check_if_int(query[1])
-            if grade_number is not None:
-                calcAvgGPA_Grade(grade_number)
-            elif query[1] == "Teacher" or  query[1] == "T":
+            if query[1] in {"Teacher", "T"}:
                 calcAvgGPA_Teacher()
-            elif query[1] == "B" or query[1] == "Bus":
+            elif query[1] in {"Bus", "B"}:
                 calcAvgGPA_Bus()
-            elif query[1] == "A" or query[1] == "All":
-                calcAvgGPA_All()
+            else:
+                grade_number = check_if_int(query[1])
+                if grade_number is not None:
+                    calcAvgGPA_Grade(grade_number)
             return True
         else:
             errorCheck()
@@ -130,7 +129,6 @@ def sourceQuery(user_query: str) -> bool:
         else:
             errorCheck()
             return True
-    
     elif query[0] in enrollment_options:
         if query_len == 1:
             getEnrollment()

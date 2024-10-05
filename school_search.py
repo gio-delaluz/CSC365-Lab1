@@ -211,6 +211,29 @@ def calcAvgGPA_Grade(number: str):
         # .2f formats to 2 decimal places
         print(f"{grade} has average GPA of %.2f." % (avg))
 
+def calcAvgGPA_Teacher():
+    merged_df = pd.merge(df_students, df_teachers, on="Classroom")
+    grouped = merged_df.groupby(["TFirstName", "TLastName"], observed=False)["GPA"].agg(['mean', 'count'])
+    grouped = grouped.sort_values(by='mean', ascending=True)
+    print("Avg. Class GPA by Teacher:")
+
+    for (tfirst, tlast), row in grouped.iterrows():
+        teacher_name = f"{tfirst.capitalize()} {tlast.capitalize()}"
+        print(f"\t{teacher_name} -- Avg. GPA: {row['mean']:.2f} -- Total: {row['count']:.0f}")
+
+def calcAvgGPA_Bus():
+    # Group by bus route, calculate average GPA and count of students
+    grouped = df_students.groupby("Bus", observed=False).agg(avg_GPA=('GPA', 'mean'), count=('GPA', 'size'))
+    
+    # Sort the grouped DataFrame by average GPA in ascending order
+    grouped = grouped.sort_values(by='avg_GPA', ascending=True)
+    
+    # Print the average GPA by bus route, formatted similarly to the teacher function
+    print("Avg. Class GPA by Bus Route:")
+    for bus, row in grouped.iterrows():
+        print(f"\tBus Route {bus} -- Avg. GPA: {row['avg_GPA']:.2f} -- Total: {row['count']:.0f}")
+
+
 def getEnrollment():
     try:
         print("Classroom Enrollment Status:")
